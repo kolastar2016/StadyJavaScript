@@ -66,6 +66,22 @@ document.body.style.backgroundColor='rgb(' + x + ',' + y + ',' + z + ')';;
 },1000);
 */
 /*
+ A=0; B=50;
+   for(i=0;i<10;i++){
+   var p=Math.round((B-A)*Math.random()+A)-25;
+   document.write('<font color="green">'+p+"</font><br>");
+   }
+   
+   setInterval(function(){
+     var A=0,B=255;
+     var r=Math.round(255*Math.random());
+	 var g=Math.round(255*Math.random());
+	 var b=Math.round(255*Math.random());
+	 console.log("rgb("+r+","+g+","+b+")");
+     document.body.style.backgroundColor="rgb("+r+","+g+","+b+")";
+    },1000);
+*/
+/*
 A =0; B = 250;
 
 x=( (Math.round((B-A)*Math.random()+A)) );
