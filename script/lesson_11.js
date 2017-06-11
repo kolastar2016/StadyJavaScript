@@ -105,4 +105,57 @@ document.write("<br>mas1:"+ mas1.join(" ")+"<br>");
 mas1.splice(2,3);
 
 document.write("<br>mas1:"+ mas1.join(" ")+"<br>");
+var mas = [2,3,,4,6,8,9,7];
+
+mas.forEach(myF);
+
+var s = 0;
+function myF(elem,i,mas){
+  s*=elem;
+  elem*=2;
+  mas[i]=elem;
+  document.write("mas=[ "+i+" ]= "+elem+"<br>");
+}
+
+document.write(mas+ "<br>");
+document.write("s= "+s+"<br>");
+
+var summas=mas.reduce(myF1,0);
+
+function myF1(s1,elem,i,mas){
+   s1+=elem;
+  document.write("s= "+s1+"<br>");
+  return s1;
+}
+
+document.write("s= "+summas+"<br>");
+
+Array.prototype.totalAverage=function(){
+  
+  var mas=this;
+  for(var i = 0,s=0; i< mas.length;i++){
+    s+=mas[i];
+  }
+  return(s/mas.length);
+}
+
+var sr=mas.totalAverage();
+document.write("sr= "+ sr + "<br>");
+
+mas1 = [2.3,2,4.5,];
+
+console.log(mas1.totalAverage());
+
+Array.prototype.devideByN=function(n){
+  var res=[] ,mas=this;
+for (var i = 0,k=-1; i< mas.length;i++){
+  if(mas[i]%n===0) {
+    k++;
+    res[k]=mas[i];
+  }
+  return res;
+}
+  console.log(mas.devideByN(4));
+
+}
 */
