@@ -8,13 +8,13 @@ console.log(str.match(re1));
 
 var s=re1.exec(str);
 console.log(s + "\n" + re1.lastIndex);
-*/
-/*while(re1.lastIndex !=0){
+
+hile(re1.lastIndex !=0){
   console.log(s.index);
   console.log(s);
   s=re1.exec(str)
-}*/
-/*
+}
+
 str = str.replace(re1,"*");
 console.log(str);
 
@@ -32,7 +32,8 @@ var re7=/[A-Zz]/i;
 var re8= /[1-9]\d\d/;
 var re9=/(start)|(begin)/;
 */
-/* var re_nameuser=/^[A-ZА-ЯЁ\'\`]{2,100}$/i;
+/*
+ var re_nameuser=/^[A-ZА-ЯЁ\'\`]{2,100}$/i;
 var re_email=/^[A-Z0-9_$\.!\-]+@[A-Z0-9\.]+\.[A-ZА-ЯЁ]{2}$/i;
 var re_tel=/^(\+380)[0-9]{9}$/;
 var re_dat=/^([0]?[1-9]|[12][0-9]|[3][01])([\.\/])([0]?[1-9]|[1][0-2])(\2)([1][9]\d{2}|[2][0][01]\d)$/;
@@ -83,6 +84,7 @@ regform.subm.onclick=function(){
 function message(mes,str_id){
   document.getElementById(str_id).innerHTML=mes;
 }
+*/
 /*
 var inpregf=regform.getElementsByTagName('input');
 for(i=0;i<inpregf.length;i++){
@@ -93,8 +95,8 @@ for(i=0;i<inpregf.length;i++){
     
   }
 }
-*/
-/*
+
+
 function clearMes(){
       message("","l"+this.id);
 }
