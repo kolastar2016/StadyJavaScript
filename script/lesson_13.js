@@ -16,6 +16,12 @@ var fact = function f(n){
   return k;
 }
 
+var y=function nameF(){
+   console.log("y");
+   console.log(nameF);   
+} 
+
+
 console.log(fact(5));
 console.log(fact(0));
 console.log(fact(7));
