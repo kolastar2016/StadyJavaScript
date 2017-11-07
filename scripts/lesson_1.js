@@ -1,7 +1,6 @@
 //clock
 function clock(idelem) {
   var d=new Date();
-  console.log(d);
   var h = d.getHours();
   var m = d.getMinutes();
   var s = d.getSeconds();

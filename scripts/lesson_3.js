@@ -1,78 +1,85 @@
-/*
-car1 = {mark:"opel",color:"red",show:function(){
-        console.log(car1.mark+car1.color)
-       }
-  
+var mem=null;
+function add(x){
+  calc.scr.value=calc.scr.value+x;
+ }
+ 
+function eqv(){
+  calc.scr.value=eval(calc.scr.value);
 }
-car2={  
-}
-car1.show();
-car1.mark="mazad";
-car1.show();
 
-function Cars(m,c,s){
-  this.mark = m;
-  this.color = c;
-  this.speed = s;
+function clean(){
+  calc.scr.value="";
+}
+
+function pm(){
+  calc.scr.value=(-1)*eval(calc.scr.value);
+}
+
+function bs(){
+  var s=calc.scr.value;
+  calc.scr.value=s.substr(0,s.length-1);
+}
   
-  this.incSpeed = function(ds){
-    this.speed=this.speed+ds;
+function mplus(){
+  mem=parseFloat(eval(calc.scr.value))+mem; 
+}
+  
+function mmin(){
+  mem=mem-eval(calc.scr.value); 
+}
+ 
+function memread(){
+  if(mem!=null){ 
+    if (mem<0){
+      calc.scr.value=calc.scr.value+"("+mem+")";
+    }else{
+      calc.scr.value=calc.scr.value+mem;
+    }
   }
-
-
-this.show = function(){
-  console.log("Marka :" + this.mark + "\n"+ "COlor :" + this.color +"\n"+ "SPeed :" + this.speed);
 }
+ 
+function memclean(){
+  mem=null;
 }
-
-var opell = new Cars("opel","green",120);
-var myCar = new Cars("ZAZ","Blue",110);
-
-opell.incSpeed(100);
-opell.show();
-myCar.show();
-
-myCar.color = "red";
-myCar.show();
-myCar["color"]="black";
-myCar.show();
-
-
-
-var pl=document.getElementById("plus");
-var t1=document.getElementById("t1");
-var t2=document.getElementById("t2");
-var res=document.getElementById("result");
-pl.onclick = function(){
-  res.value = Number(t1.value) + Number(t2.value)
+ 
+var dvbut=document.getElementById('dvbut');
+dvbut.onclick=function(event){
+  event = event || window.event;
+  var tg=event.target;    
+  var atr=tg.getAttribute('data-v');//такой атрибут есть только у кнопок, используемых для набора выражения(+,-, цифры и т.д.)
+  if(atr!=null){
+    add(atr);// или add(tg.value); 
+  }else{
+    switch(tg.name){
+      case "eq": eqv();break;
+      case "bs": bs();break;
+      case "mmin": mmin();break;
+      case "mplus": mplus();break;
+      case "pm":pm();break;
+      case "memclean":memclean();break;
+      case "memread": memread();break;
+      case "clean": clean();break;
+    } 
+  } 
 }
-
-console.log(parseFloat("2e10"));
-console.log(parseFloat("2.56km"));
-console.log(parseFloat("vb2.56"));
-console.log(parseInt("2e8"));
-console.log(parseInt("2.56km"));
-console.log(parseInt("ff",16));
-console.log(parseInt("101",2));
-
-x = "3.78";
-console.log(+x+5);
-console.log(5+(+x));
-
-x = String(35);
-console.log(x+40);
-
-var num = 255;
-console.log(num.toString(16));
-
-console.log(Boolean(""));
-console.log(Boolean(null));
-console.log(Boolean(-20));
-
-console.log (typeof num);
-console.log (typeof x);
-
-//eval
-str = "alert(45);document.body.style.backgroundColor = 'red';";
-eval(str);
-*/
+ 
+calc.scr.onkeydown=function(event){
+  event=event||window.event;
+  event.preventDefault();//запрет реакции по умолчанию
+  var ch=event.charCode || event.keyCode;
+  if(ch>47 && ch<58){
+    calc.scr.value+=String.fromCharCode(ch); 
+  }
+  if(ch==8){ 
+    bs();
+  }
+}
+ 
+calc.memread.onkeydown=function(event){
+  event.preventDefault();
+}
+ 
+dvbut.onkeydown=function(event){
+  event=event||window.event;
+  event.preventDefault();
+}  
