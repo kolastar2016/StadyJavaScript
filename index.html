@@ -6,140 +6,91 @@
     <link rel="stylesheet" href="./css/pages/home.css">
 </head>
 <body>
+
   <section class="lessonOne">  
-    <p>23.05.2017 Lesson 1</p>
+    <p>Lesson 1</p>
 	  <A class="testLessonOne" style="position:absolute; z-index:100" href="http://learn.javascript.ru/css-for-js">Кликни здесь</a>
 	  <A class="testLessonOne" style="position:absolute; top:50px; left:500px;" href="JavaScript: alert('Hello!')">А это уже JavaScript</A>
     <p id="lessonOneClock"> clock</p>
-  	<div id = "testLessonOneblock"> hello!!!</div>
-  	<button type = "button" onclick = "p = prompt('как вас зовут?') ; alert('Привет  ' + p);"> поздравляю</button>
-  	<button type = "button" onclick = "document.getElementById('testLessonOneblock').style.color = 'blue';"> Цвет </button>
+  	<div id="testLessonOneblock"> hello!!!</div>
+  	<button type="button" onclick="p = prompt('как вас зовут?') ; alert('Привет  ' + p);"> поздравляю</button>
+  	<button type="button" onclick="document.getElementById('testLessonOneblock').style.color = 'blue';"> Цвет </button>
   </section>
+
   <section class="lessonTwo">
-    <p>24.05.2017 Lesson 2</p>
+    <p>Lesson 2</p>
     <input id="lessonTwoButton" type="button" value="Кнопка1">
     <input id="lessonTwoColor" type="color" value="#cccc00">
     <div id="lessonTwoDiv" title="Click Me"> </div>
   </section>
-<!--25.05.2017 Lesson 3-->
-<!--<spun>
-	<p>
-	<input id ="t1" type ="text" placeholder="first number">
-  	<input id ="t2" type ="text" placeholder="second number">
-  	<input id ="plus" type ="button" value="+">
-  	<input id ="result" type ="text" placeholder="result">
-	</p>
-</spun>
-<div>
-   	<input id="scr" type="text"><br>
-	<input id="clean" type="button" name="but1" value="C">
-    <input id="memread" type="button" name="but1" value="MR">
-    <input id="memclean" type="button" name="but1" value="MC">
-    <input id="eq" type="button" name="but1" value="=">
-    <input id="t1" type="button" name="but1" value="1">
-    <input id="t2" type="button" name="but1" value="2">
-    <input id="t3" type="button" name="but1" value="3">
-    <input id="pm" type="button" name="but1" value="&#177">
-    <input id="t4" type="button" name="but1" value="4">
-    <input id="t5" type="button" name="but1" value="5">
-    <input id="t6" type="button" name="but1" value="6">
-    <input id="tdiv" type="button" name="but1" value="/">
-    <input id="t7" type="button" name="but1" value="7">
-    <input id="t8" type="button" name="but1" value="8">
-    <input id="t9" type="button" name="but1" value="9">
-    <input id="tmult" type="button" name="but1" value="*">
-   	<input id="tpl" type="button" name="but1" value="+">
-    <input id="tz" type="button" name="but1" value="0">
-    <input id="tmin" type="button" name="but1" value="-">
-    <input id="tdot" type="button" name="but1" value=".">
-</div>-->
 
-<!--26.05.2017 Lesson 4-->
-<!--<div id="blok2">
-  		Hi
-  		</div>
-  		<div id="blok1">
-  		Hello!!
-  		</div>
-  		<div id = "blok3">l
-</div>
- <div id = "dvcalc">
-   <form id="calc" name="calc">
-    <input id="src" name="src" type="text" name="src" placeholder="0"><br>
-    <input id="clean" type="button" name="clean" value="C">
-    <input id="memread" type="button" name="memread" value="MR">
-    <input id="memclean" type="button" name="memclean" value="MC">
-    <input id="bs" type="button" name="bs" value="&#8678">
-    <input id="eq" type="button" name="eq" value="=">
-    <br>
-    <input type="button" value="1" onclick="add(this.value)">
-    <input type="button" value="2" onclick="add(this.value)">
-    <input type="button" value="3" onclick="add(this.value)">
-    <input id="pm" type="button" name="pm" value="&#177">
-    <input type="button" value="(" onclick="add(this.value)">
-    <br>
-    <input type="button" value="4" onclick="add(this.value)">
-    <input type="button" value="5" onclick="add(this.value)">
-    <input type="button" value="6" onclick="add(this.value)">
-    <input type="button" value="/" onclick="add(this.value)">
-    <input type="button" value=")" onclick="add(this.value)">
-     <br>
-    <input type="button" value="7" onclick="add(this.value)">
-    <input type="button" value="8" onclick="add(this.value)">
-    <input type="button" value="9" onclick="add(this.value)">
-    <input type="button" value="*" onclick="add(this.value)">
-    <input type="button" value="M+" name="mplus">
-     <br>
-    <input type="button" value="+" onclick="add(this.value)">
-    <input type="button" value="0" onclick="add(this.value)">
-    <input type="button" value="-" onclick="add(this.value)">
-    <input type="button" value="." onclick="add(this.value)">
-     <input type="button" value="M-" name="mmin">
-   </form>
-  </div>-->
- 
-  <!--29.05.2017 Lesson 5-->
-  <!--ONLY JAVAsCRIPT-->
+  <section class="lessonThree">
+    <p>Lesson 3</p>
+    <spun>
+      <p>
+	    <input id="t1" type="text" placeholder="first number">
+ 	    <input id="t2" type="text" placeholder="second number">
+    	<input id="plus" type="button" value="+">
+    	<input id="result" type="text" placeholder="result">
+	    </p>
+    </spun>
+    <div class="lessonThreeCalculator">
+   	 <div class='task1_calc' id="dvcalc">
+        <form name="calc" name="calc">
+        <textarea  class='lessonThreeCalculatorScreen' id="scr"  name="scr" type="text" placeholder="0"></textarea><br>
+        <div id="dvbut">
+          <input id="clean" type="button" name="clean" value="C">
+          <input id="memread" type="button" name="memread" value="MR">
+          <input id="memclean" type="button" name="memclean" value="MC">
+          <input id="bs" type="button" name="bs" value="&#9668">
+          <input id="eq" type="button" name="eq" value="=">
+          <input type="button" value="1" data-v="1">
+          <input type="button" value="2" data-v="2">
+          <input type="button" value="3" data-v="3">
+          <input id="pm" type="button" name="pm" value="&#177" >
+          <input type="button" value="(" data-v="(">
+          <input type="button" value="4" data-v="4">
+          <input type="button" value="5" data-v="5">
+          <input type="button" value="6" data-v="6">
+          <input type="button" value="/" data-v="/">
+          <input type="button" value=")" data-v=")">
+          <input type="button" value="7" data-v="7">
+          <input type="button" value="8" data-v="8">
+          <input type="button" value="9" data-v="9">
+          <input type="button" value="*" data-v="*">
+          <input type="button" name="mplus" value="M+" >
+          <input type="button" value="+" data-v="+">
+          <input type="button" value="0" data-v="0">
+          <input type="button" value="-" data-v="-">
+          <input type="button" value="." data-v=".">
+          <input type="button" name="mmin" value="M-" >
+        </div>
+        </form>
+      </div>
+    </div>
+  </section>
 
-  <!--30.05.2017 Lesson 6-->
-<!--<div id = "dvcalc">
-   <form id="calc" name="calc">
-    <input id="src" name="src" type="text" name="src" placeholder="0"><br>
-    <input id="clean" type="button" name="clean" value="C">
-    <input id="memread" type="button" name="memread" value="MR">
-    <input id="memclean" type="button" name="memclean" value="MC">
-    <input id="bs" type="button" name="bs" value="&#8678">
-    <input id="eq" type="button" name="eq" value="=">
-    <br>
-    <input type="button" value="1" onclick="add(this.value)">
-    <input type="button" value="2" onclick="add(this.value)">
-    <input type="button" value="3" onclick="add(this.value)">
-    <input id="pm" type="button" name="pm" value="&#177">
-    <input type="button" value="(" onclick="add(this.value)">
-    <br>
-    <input type="button" value="4" onclick="add(this.value)">
-    <input type="button" value="5" onclick="add(this.value)">
-    <input type="button" value="6" onclick="add(this.value)">
-    <input type="button" value="/" onclick="add(this.value)">
-    <input type="button" value=")" onclick="add(this.value)">
-     <br>
-    <input type="button" value="7" onclick="add(this.value)">
-    <input type="button" value="8" onclick="add(this.value)">
-    <input type="button" value="9" onclick="add(this.value)">
-    <input type="button" value="*" onclick="add(this.value)">
-    <input type="button" value="M+" name="mplus">
-     <br>
-    <input type="button" value="+" onclick="add(this.value)">
-    <input type="button" value="0" onclick="add(this.value)">
-    <input type="button" value="-" onclick="add(this.value)">
-    <input type="button" value="." onclick="add(this.value)">
-     <input type="button" value="M-" name="mmin">
-   </form>
-  </div>-->
+  <section class="lessonFour">
+  <p> Lesson 4</p>
+  <div id="blok2"> Hi </div>
+  <div id="blok1"> Hello!! </div>
+  <div id="blok3"> l </div>
+  </section>
+  
+  <section class="lessonFive">
+  <p> Lesson 5</p>
+  <input type="text" id="month" placeholder="input number of month" >
+  <lable id = "labmonth"> </lable>
+  <br><br>
+  <div class="lessonFiveBorder">
+    <div id="coordX"></div>
+    <div id="coordY"></div>
+  </div>
+  </section>
+  <section class="lessonSeven">
+  <p> Lesson 7</p>
 
-  <!--31.05.2017 Lesson 7-->
-  <!--ONLY JAVAsCRIPT       ciclum for,do,while-->
-
+  </section>
   <!--02.06.2017 Lesson 9-->
   <!-- <input type="date" placeholder="dd.mm.yyyy" id="myday">-->
  <!--<table border>

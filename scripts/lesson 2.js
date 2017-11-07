@@ -1,4 +1,4 @@
-// назначение обработчиков
+// the purpose of the handler
 var lessonTwoButton=document.getElementById("lessonTwoButton");
 var lessonTwoColor=document.getElementById("lessonTwoColor");
 lessonTwoButton.onclick=function() {
@@ -10,7 +10,7 @@ function changeColor() {
 	document.body.style.backgroundColor=lessonTwoColor.value;
 }
 lessonTwoButton.onchange=function(){
-// предыдущий обработчик пропадет
+// previous handler will be lost
 	lessonTwoButton.style.backgroundColor=lessonTwoColor.value; 
 }
 var lessonTwoDiv=document.getElementById('lessonTwoDiv');
@@ -19,7 +19,7 @@ lessonTwoDiv.style.height="100px";
 lessonTwoDiv.style.backgroundColor="red";
 var x=20;
 lessonTwoDiv.style.marginLeft = x + "px";
-//метод addEventListener
+//mettod addEventListener
 lessonTwoDiv.addEventListener("click",function() {
  	console.log("Okey");
 })
