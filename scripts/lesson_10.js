@@ -199,6 +199,6 @@ function multMatr12(){
 			for(var j=0; j<numdim; j++){
 			inpm3[j+numdim*i].value=mas3[i][j];
 			}
-		}*/
+		}
 }
 */
