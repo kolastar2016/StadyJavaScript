@@ -1,144 +1,186 @@
-  
-/*
-  var myday=document.getElementById("myday");
-  myday.onchange=function(){
-  	
-  	console.log(String(myday.value));
-  //	console.log(myday.value);
-  
-  var md = new Date(myday.value);
-s="";
-
-if(!isNaN(md.getMonth())){
-s+=	md.getMonth()+1;
-s+=	md.getFullYear();
-s+=	md.getDate();
-*/
-/*
-  console.log(md.getMonth()+1);
-  console.log(md.getFullYear());
-  console.log(md.getDate());
-  */
-/*
+/*function rnd(A,B,n) {
+  A= Math.abs(A);
+  B= Math.abs(B);
+  if (A>B){
+    var x = A;
+    A=B;
+    B=x;
+  }
+  var mas=[];
+  for(var i=0;i<n;i++){
+    mas[i]=Math.round((B-A)*Math.random()+A);
+  }
+  console.log(mas);
+  return mas;
 }
-else{
-	for(i=0;i<myday.value.length;i++){
-		if(myday.value[i]!="."){
-			s+=myday.value[i];
+rnd(4,19,10);
+
+var dim = document.querySelector("#dimantion");
+var numdim = parseInt(dim.value);
+var matrixs = document.querySelector("#matrixs");
+var divbutmatr = document.createElement('div');
+divbutmatr.id="divbutmatr";
+divbutmatr.style.display="inline-block";
+divbutmatr.style.textAlign = "center";
+divbutmatr.style.margin="0px 5px";
+
+var mplus=document.createElement('button');
+divbutmatr.appendChild(mplus);
+mplus.id="mplus";
+mplus.innerHTML="+";
+divbutmatr.innerHTML+="<br>";
+
+var mmin=document.createElement('button');
+divbutmatr.appendChild(mmin);
+mmin.id="mmin";
+mmin.innerHTML="-";
+divbutmatr.innerHTML+="<br>";
+
+var mmul=document.createElement('button');
+divbutmatr.appendChild(mmul);
+mmul.id="mmul";
+mmul.innerHTML="*";
+divbutmatr.innerHTML+="<br>";
+
+var mrnd=document.createElement('button');
+divbutmatr.appendChild(mrnd);
+mrnd.id="mrnd";
+mrnd.innerHTML="rnd";
+
+
+console.log(mrnd);
+function rndMatr12(){
+  
+
+  var matr1=document.getElementById('matr1');
+  var matr2=document.getElementById('matr2');
+
+  var inpm1 = matr1.getElementsByTagName('input');
+  var inpm2 = matr2.getElementsByTagName('input');
+  var n = numdim*numdim;
+  var mas =rnd(0,100,2*n);
+
+  for (var i=0;i<n;i++){
+  inpm1[i].value=mas[i];
+  inpm2[i].value=mas[i+n];
+  }
+}
+
+dim.onchange=function(){
+
+  
+  numdim = parseInt(dim.value);
+     matrixs.innerHTML="";
+     console.log(numdim);
+  var matr1 = document.createElement('div');
+  
+  matrixs.appendChild(matr1);
+  
+  matr1.id = "matr1";
+  matr1.style.padding="1px";
+  matr1.style.margin="8px";
+  matr1.style.display="inline-block";
+  matr1.style.backgroundColor="blue";
+  
+  for(i=0;i<numdim;i++){
+    for(j=0;j<numdim;j++){
+  
+      var inp=matr1.appendChild(document.createElement('input'));
+      inp.size="4";
+    inp.style.width="40px";
+		inp.style.height="40px";
+		inp.style.margin="4px";
+      matr1.appendChild(inp);
+    }
+    matr1.innerHTML+="<br>";
+  }
+  
+  divbutmatr = matrixs.appendChild(divbutmatr);
+  
+  var matr2= matr1.cloneNode(true);
+ var matr3= matr1.cloneNode(true);
+matrixs.appendChild(matr2);
+  matr2.id="matr2";
+ matr2.style.backgroundColor="yellow"; 
+  matrixs.innerHTML+="<hr>";
+  
+  matrixs.appendChild(matr3);
+  matr3.id="matr3";
+  matr3.style.backgroundColor="red";
+
+  mrnd=document.getElementById('mrnd');
+  mrnd.onclick=rndMatr12;
+  
+  mplus=document.getElementById('mplus');
+  mplus.onclick=plusMatr12;
+  
+  mmul=document.getElementById("mmul");
+mmul.onclick=multMatr12;
+
+mmin=document.getElementById("mmin");
+mmin.onclick=minMatr12;
+}
+
+function plusMatr12(){
+  var matr1=document.getElementById('matr1');
+  var matr2=document.getElementById('matr2');
+  var matr3=document.getElementById('matr3');
+  
+  var inpm1 = matr1.getElementsByTagName('input');
+  var inpm2 = matr2.getElementsByTagName('input');
+  var inpm3 = matr3.getElementsByTagName('input');
+  var n = numdim*numdim;
+  
+  for(var i=0;i<n;i++){
+    inpm3[i].value=Number(inpm1[i].value)+Number(inpm2[i].value);
+  
+  }
+}
+
+function minMatr12(){
+	var matr1=document.getElementById("matr1");
+	var matr2=document.getElementById("matr2");
+	var matr3=document.getElementById("matr3");
+
+	var inpm1=matr1.getElementsByTagName("input");
+	var inpm2=matr2.getElementsByTagName("input");
+	var inpm3=matr3.getElementsByTagName("input");
+	var n=numdim*numdim;
+		for(i=0; i<n; i++){
+		inpm3[i].value=Number(inpm1[i].value)-Number(inpm2[i].value)
 		}
-	}
 }
 
-alert(s);
-}
+function multMatr12(){
+	var matr1=document.getElementById("matr1");
+	var matr2=document.getElementById("matr2");
+	var matr3=document.getElementById("matr3");
+	var inpm1=matr1.getElementsByTagName("input");
+	var inpm2=matr2.getElementsByTagName("input");
+	var inpm3=matr3.getElementsByTagName("input");
+	var mas1=[];
+	var mas2=[];
 
-var x= 23.161516531531;
-x=x.toFixed(2);
-console.log(x);
+		for(var i=0; i<numdim; i++){
 
-x=Math.floor(x);
-console.log(x);
+		mas1[i]=[];
+		mas2[i]=[];
 
-console.log(Math.random());
+			for(var j=0; j<numdim; j++){
 
-A =100; B = 110;
-for(i=0;i<10;i++){
-document.write(Math.round((B-A)*Math.random()+A) + "<br>");
-}
+			mas1[i][j]=inpm1[j+numdim*i].value;
+			mas2[i][j]=inpm2[j+numdim*i].value;			
+			}			
 
-for(i=0;i<10;i++){
-	document.write('<font color="red">' + Math.ceil(B-A)*Math.random()+A + "</font><br>");
-}
+		}
+		for(var i=0; i<numdim; i++){
+			for(var j=0, s=0; j<numdim; j++){
+				for(var k=0; k<numdim; k++){
+				s+=mas1[i][k]*mas2[k][j];
+				}
 
-A =0; B = 50;
-for(i=0;i<10;i++){
-document.write('<font color="green">' + (Math.round((B-A)*Math.random()+A)-25) + "</font><br>");
-}
+				inpm3[j+numdim*i].value=s;
+			}
 
-
-setInterval(function(){
-	var A = 0,B= 255;
-x=(Math.round((B-A)*Math.random()+A));
-y =(Math.round((B-A)*Math.random()+A));
-z = (Math.round((B-A)*Math.random()+A));
-console.log(x+","+y+","+z);
-document.body.style.backgroundColor='rgb(' + x + ',' + y + ',' + z + ')';;
-},1000);
-*/
-/*
- A=0; B=50;
-   for(i=0;i<10;i++){
-   var p=Math.round((B-A)*Math.random()+A)-25;
-   document.write('<font color="green">'+p+"</font><br>");
-   }
-   
-   setInterval(function(){
-     var A=0,B=255;
-     var r=Math.round(255*Math.random());
-	 var g=Math.round(255*Math.random());
-	 var b=Math.round(255*Math.random());
-	 console.log("rgb("+r+","+g+","+b+")");
-     document.body.style.backgroundColor="rgb("+r+","+g+","+b+")";
-    },1000);
-*/
-/*
-A =0; B = 250;
-
-x=( (Math.round((B-A)*Math.random()+A)) );
-y =((Math.round((B-A)*Math.random()+A)) );
-z = ((Math.round((B-A)*Math.random()+A)) );
-console.log(x);
-console.log(y);
-console.log(z);
-document.body.style.color= x+y+z;
-
-
-var mas1 =[]; 
-var mas2 = new Array();
-var mas3 = new Array(3);
-var mas4 = [4,2,3,"ten",true];
-var mas5 = new Array(5,6,7,45,"Hello");
-
-console.log(mas4[0] + mas5[4]);
-
-mas1[4] = "five elemnt";
-
-var mas6 = new Array(0);
-console.log(mas6);
-console.log(mas3);
-console.log(mas5);
-//alert(mas5);
-*/
-/*
-var table = document.getElementsByTagName('table')[0];
-var mastd = table.getElementsByTagName('td');
-console.log(mastd);
-
-  // mastd[5].innerHTML= "10";
-
-var tr = table.getElementsByTagName('tr');
-
-function result(){
-	for (var i =1, sum=0; i<tr.length;i++){
-		var td = tr[i].getElementsByTagName('td');
-		sum += td.innerHTML[1] * td.innerHTML[2];
-	}
-	document.getElementById("res").innerHTML=sum;
-}
-
-	for (var i =1,sum=0; i<tr.length;i++){
-		var td = tr[i].getElementsByTagName('td');
-		td[1].oninput=result;
-		td[2].oninput=result;
-	}
-
-document.querySelector('table tr:last-child td:last-child').innerHTML="1717";
-td1 = document.querySelector('td');
-tdALL = document.querySelectorAll('td');
-console.log(td1);
-console.log(tdALL[0]);
-
-function rnd (A,B,n){
-	return mas
-}
+		}
 */
