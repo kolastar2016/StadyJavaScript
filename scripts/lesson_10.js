@@ -1,204 +1,67 @@
-/*
-function rnd(A,B,n){
-      A= Math.abs(A);
-       B= Math.abs(B);
-       if (A>B){
-         var x = A;
-         A=B;
-         B=x;
-       }
-       var mas=[];
-       for(var i=0;i<n;i++){
-         mas[i]=Math.round((B-A)*Math.random()+A);
-       }
-       console.log(mas);
-       return mas;
-     }
-   // rnd(19,4,10);
-
-
-
-
-var dim = document.querySelector("#dimantion");
-
-var numdim = parseInt(dim.value);
-var matrixs = document.querySelector("#matrixs");
-var divbutmatr = document.createElement('div');
-divbutmatr.id="divbutmatr";
-divbutmatr.style.display="inline-block";
-divbutmatr.style.textAlign = "center";
-divbutmatr.style.margin="0px 5px";
-
-var mplus=document.createElement('button');
-divbutmatr.appendChild(mplus);
-mplus.id="mplus";
-mplus.innerHTML="+";
-divbutmatr.innerHTML+="<br>";
-
-var mmin=document.createElement('button');
-divbutmatr.appendChild(mmin);
-mmin.id="mmin";
-mmin.innerHTML="-";
-divbutmatr.innerHTML+="<br>";
-
-var mmul=document.createElement('button');
-divbutmatr.appendChild(mmul);
-mmul.id="mmul";
-mmul.innerHTML="*";
-divbutmatr.innerHTML+="<br>";
-
-var mrnd=document.createElement('button');
-divbutmatr.appendChild(mrnd);
-mrnd.id="mrnd";
-mrnd.innerHTML="rnd";
-//alert(dim.value);
-
-console.log(mrnd);
-function rndMatr12(){
-  
-  //alert();
- // rnd();
-  var matr1=document.getElementById('matr1');
-  var matr2=document.getElementById('matr2');
-
-  var inpm1 = matr1.getElementsByTagName('input');
-  var inpm2 = matr2.getElementsByTagName('input');
-  var n = numdim*numdim;
-  var mas =rnd(0,100,2*n);
- // console.log(numdim);
- // alert(mas);
-  for (var i=0;i<n;i++){
- // inpm1[i].value=rnd(0,100,1)[0];
-  inpm1[i].value=mas[i];
-  inpm2[i].value=mas[i+n];
+var re_nameuser=/^[A-ZА-ЯЁ\'\`]{2,100}$/i;
+var re_email=/^[A-Z0-9_$\.!\-]+@[A-Z0-9\.]+\.[A-ZА-ЯЁ]{2}$/i;
+var re_tel=/^(\+380)[0-9]{9}$/;
+var re_dat=/^([0]?[1-9]|[12][0-9]|[3][01])([\.\/])([0]?[1-9]|[1][0-2])(\2)([1][9]\d{2}|[2][0][01]\d)$/;
+var re_pas_posible=/^[\w*.\\\/#$%^&!]{8,}$/;
+var re_pas_digit=/\d/;
+var re_pas_upper=/[A-Z]/;
+regform.subm.onclick=function(){
+   var flag = 0;
+  if(!re_nameuser.test(regform.nameuser.value)){
+    message("Not corect name","lnameuser");
+    flag=1;
+  }
+  if (!re_email.test(regform.email.value)){
+    message("Not corect email","lemail");
+    flag=2;
+  }
+  if (!re_tel.test(regform.tel.value)){
+    message("Not corect email","ltel");
+    flag=3;
+  }
+  if (!re_dat.test(regform.dat.value)){
+    message("Not corect data","ldat");
+    flag=4;
+  }
+  if (!re_pas_posible.test(regform.pas1.value)){
+    message("Not corect pas1 input simbol","lpas1");
+    flag=5;
+  }
+  else if (!re_pas_digit.test(regform.pas1.value)){
+    message("Not corect data input number","lpas1");
+    flag=6;
+  }
+   else if (!re_pas_upper.test(regform.pas1.value)){
+    message("Not corect data input upper Register","lpas1");
+    flag=7;
+  }
+  if (regform.pas1.value!=regform.pas2.value){
+    message("Frirst nad second Password not equals","lpas2");
+    flag=8;
+  }
+  if(flag===0){
+    regform.submit();
+    regform.reset();
+    alert("Congratulation your text is send");
   }
 }
-
-dim.onchange=function(){
- // alert(dim.value);
-  
-  numdim = parseInt(dim.value);
-     matrixs.innerHTML="";
-     console.log(numdim);
-  var matr1 = document.createElement('div');
-  
-  matrixs.appendChild(matr1);
-  
-  matr1.id = "matr1";
-  //matr1.style.width="400px";
-  //matr1.style.height="400px";
-  matr1.style.padding="1px";
-  matr1.style.margin="8px";
-  matr1.style.display="inline-block";
-  matr1.style.backgroundColor="blue";
-  
-  for(i=0;i<numdim;i++){
-    for(j=0;j<numdim;j++){
-  
-      var inp=matr1.appendChild(document.createElement('input'));
-      inp.size="4";
-      //    matr1.document.appendChild(document.createElement('input'));
-    inp.style.width="40px";
-		inp.style.height="40px";
-		inp.style.margin="4px";
-      matr1.appendChild(inp);
-    }
-    matr1.innerHTML+="<br>";
-  }
-  
-  divbutmatr = matrixs.appendChild(divbutmatr);
-  
-  var matr2= matr1.cloneNode(true);
- var matr3= matr1.cloneNode(true);
-matrixs.appendChild(matr2);
-  matr2.id="matr2";
- matr2.style.backgroundColor="yellow"; 
-  matrixs.innerHTML+="<hr>";
-  
-  matrixs.appendChild(matr3);
-  matr3.id="matr3";
-  matr3.style.backgroundColor="red";
-
-  mrnd=document.getElementById('mrnd');
-  mrnd.onclick=rndMatr12;
-  
-  mplus=document.getElementById('mplus');
-  mplus.onclick=plusMatr12;
-  
-  mmul=document.getElementById("mmul");
-mmul.onclick=multMatr12;
-
-mmin=document.getElementById("mmin");
-mmin.onclick=minMatr12;
+function message(mes,str_id){
+  document.getElementById(str_id).innerHTML=mes;
 }
-//console.log(mrnd);
-
-function plusMatr12(){
-  var matr1=document.getElementById('matr1');
-  var matr2=document.getElementById('matr2');
-  var matr3=document.getElementById('matr3');
-  
-  var inpm1 = matr1.getElementsByTagName('input');
-  var inpm2 = matr2.getElementsByTagName('input');
-  var inpm3 = matr3.getElementsByTagName('input');
-  var n = numdim*numdim;
-  
-  for(var i=0;i<n;i++){
-    inpm3[i].value=Number(inpm1[i].value)+Number(inpm2[i].value);
-  
+var inpregf=regform.getElementsByTagName('input');
+for(i=0;i<inpregf.length;i++){
+  if (inpregf[i].type.toLowerCase() === "text"|| inpregf[i].type.toLowerCase() === "password"){
+    inpregf[i].onfocus=function(){
+      message("","l"+this.id);
+    }  
   }
 }
-
-function minMatr12(){
-	var matr1=document.getElementById("matr1");
-	var matr2=document.getElementById("matr2");
-	var matr3=document.getElementById("matr3");
-
-	var inpm1=matr1.getElementsByTagName("input");
-	var inpm2=matr2.getElementsByTagName("input");
-	var inpm3=matr3.getElementsByTagName("input");
-	var n=numdim*numdim;
-		for(i=0; i<n; i++){
-		inpm3[i].value=Number(inpm1[i].value)-Number(inpm2[i].value)
-		}
+function clearMes(){
+  message("","l"+this.id);
 }
-
-function multMatr12(){
-	var matr1=document.getElementById("matr1");
-	var matr2=document.getElementById("matr2");
-	var matr3=document.getElementById("matr3");
-	var inpm1=matr1.getElementsByTagName("input");
-	var inpm2=matr2.getElementsByTagName("input");
-	var inpm3=matr3.getElementsByTagName("input");
-	var mas1=[];
-	var mas2=[];
-	//var mas3=[];
-		for(var i=0; i<numdim; i++){
-		// строки массива
-		mas1[i]=[];
-		mas2[i]=[];
-		//mas3[i]=[];
-			for(var j=0; j<numdim; j++){
-			//столбцы массива
-			mas1[i][j]=inpm1[j+numdim*i].value;
-			mas2[i][j]=inpm2[j+numdim*i].value;			
-			}			
-			//console.log(mas1);
-		}
-		for(var i=0; i<numdim; i++){
-			for(var j=0, s=0; j<numdim; j++){
-				for(var k=0; k<numdim; k++){
-				s+=mas1[i][k]*mas2[k][j];
-				}
-				//mas3[i][j]=s;
-				inpm3[j+numdim*i].value=s;
-			}
-		//console.log(mas3[i]);
-		}
-		/*for (var i=0; i<numdim; i++){
-			for(var j=0; j<numdim; j++){
-			inpm3[j+numdim*i].value=mas3[i][j];
-			}
-		}
-}
-*/
+regform.nameuser.onfocuse=clearMes;
+regform.email.onfocuse=clearMes;
+regform.tel.onfocuse=clearMes;
+regform.dat.onfocuse=clearMes;
+regform.pas1.onfocuse=clearMes;
+regform.pas2.onfocuse=clearMes;

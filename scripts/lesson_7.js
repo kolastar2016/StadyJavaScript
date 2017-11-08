@@ -1,36 +1,17 @@
-function sum3(x,y,z){
-	if (x===undefined) x=0;
-	if (y===undefined) y=0;
-	if (z===undefined) z=0;
-	var s = x+y+z;
-	return s;
+var thisNumber=document.querySelector("#lessonSevenNumber");
+
+var one = 1;
+while(one<=10) {
+	document.write("i = " + one +"<br>")
+	one++;
 }
 
-function znak(x){
-	if(x<0) return"minus";
- 		if(x==0) return"noli";
- 			return"pluses";
-}
-function nalog(s){
-	var global = 7;
- 	s= s-s*kf;
- 	kf= -0.01;
- 	return s;
-}
-var i = 1;
-while(i<=10){
-	document.write("i = " + i +"<br>")
-	i++;
-}
-var i = 1;
-do{ document.write("i = " + i +"<br>")
-	i++;
+var two = 1;
+do { 
+	document.write("j = " + two +"<br>")
+	two++;
 	}
-while(i<=10);
-document.write('<input id ="A" type="text" placeholder="A">');
-document.write('<input id = "B" type="text" placeholder="B">');
-document.write('<input id="butnod" type = "button" value="NOD">');
-document.write('<p id = "nod"></p>');
+while(two<=10);
 
 var nod = document.querySelector("#nod");
 var butnod = document.querySelector("#butnod");
@@ -45,19 +26,21 @@ butnod.onclick=function(){
 			else B-=A;
 			console.log("A = " + A +"  B = " + B );
 		}
-		nod.innerHTML="NOD = "+ A;
+		nod.innerHTML="NOD = "+ A + "&nbsp&nbsp&nbsp In console you can see result";
 	}
 	else nod.innerHTML="";
 }
-var i = 1; 
+
+var three = 1; 
 var counter = 9;
 var str = "*";
 while (str.length<=10){
 	document.write(str);
+	//thisNumber.innerHTML=str;
 	document.write("<br />");
 	str+="*";
 }
-while(i<= 9){
+while(three<= 9){
 	j = 1;
 	while(j<= counter){
 		document.write("*");
@@ -65,10 +48,11 @@ while(i<= 9){
 	}
 	counter--;
 	document.write("<br>");
-	i++;
+	three++;
 }
-var i = 1 ,count = 9;
-while(i<= 9){
+
+var four = 1 ,count = 9;
+while(four<= 9){
 	j = 1;
 	while(j<= count){
 		document.write("*");
@@ -76,8 +60,9 @@ while(i<= 9){
 	}
 	count--;
 	document.write("<br>");
-	i++;
+	four++;
 }
+
 var s ="";
 i = 1;
 while(i<=10){
@@ -87,21 +72,13 @@ while(i<=10){
 }
 i = 1 ; count=9;
 while(i<10){
-
-	document.write (s.substr(0,count) + "<br>");
+	document.write(s.substr(0,count) + "<br>");
 	count--;
 	i++;
 }
+
 var text = "";
 for(var i = 1; i<=10;i++ ){
 	text += "Number" + i+ "<br>";
 }
-document .write(text);
-for(var i = 1, s = 0; i < 10; i++){
-	s = s+i;
-}
-document.write(s + "<br>");
-for (var i = 1,p = 1; i<6;i++){
-	p*=i;
-}
-document.write(p);
+thisNumber.innerHTML=text;
