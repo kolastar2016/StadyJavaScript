@@ -1,7 +1,7 @@
 var d=new Date(), greeting="";
 time=d.getHours();
 if(time>=5 && time<= 10){
-	greeting="Good morning";
+	greeting="<br>"+"Good morning";
 } 
 else if(time>10 && time<19){
     greeting="Good day";
@@ -9,7 +9,7 @@ else if(time>10 && time<19){
 else if(time>=19 && time<22){
     greeting="Good evening";
 }else{
-    greeting="good nite";
+    greeting="<br>"+"good nite";
 }
 document.write("<b style='text-decoration:underline;'>"+greeting+"</b><hr color='blue'></hr>");
 month.oninput=function(){

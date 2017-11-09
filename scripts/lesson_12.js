@@ -19,8 +19,8 @@ function difDate(d1,d2){
         obj.sec=Math.floor(t/(1000));
         t-=obj.sec*1000;
         obj.ms=t;
-        return obj;
     }
+        return obj;
 }
 var date1=new Date();
 var date2=new Date(2017,5,17,13);

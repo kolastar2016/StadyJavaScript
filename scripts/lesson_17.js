@@ -20,7 +20,6 @@ setTimeout(function(){
 },2000);
 function getChildNodes(obj){
   var coll=obj.childNodes;
-  var win=window.open("","_blank","width=100,height=100");
   var str="";
   for(var i=0;i<coll.length;i++){
     if(coll[i].nodeType==3){
@@ -36,7 +35,6 @@ getChildNodes(document.head);
 getChildNodes(document.documentElement);
 function getChildren(obj){
   var coll=obj.children;
-  var win=window.open("","_blank","width=200,height=200");
   for(var i=0;i<coll.length;i++) { 
     // win.document.write(coll[i].tagName+'<br>');
   } 
