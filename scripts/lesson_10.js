@@ -6,36 +6,36 @@ var re_pas_posible=/^[\w*.\\\/#$%^&!]{8,}$/;
 var re_pas_digit=/\d/;
 var re_pas_upper=/[A-Z]/;
 regform.subm.onclick=function(){
-   var flag = 0;
+   var flag=0;
   if(!re_nameuser.test(regform.nameuser.value)){
     message("Not corect name","lnameuser");
     flag=1;
   }
-  if (!re_email.test(regform.email.value)){
+  if(!re_email.test(regform.email.value)){
     message("Not corect email","lemail");
     flag=2;
   }
-  if (!re_tel.test(regform.tel.value)){
+  if(!re_tel.test(regform.tel.value)){
     message("Not corect email","ltel");
     flag=3;
   }
-  if (!re_dat.test(regform.dat.value)){
+  if(!re_dat.test(regform.dat.value)){
     message("Not corect data","ldat");
     flag=4;
   }
-  if (!re_pas_posible.test(regform.pas1.value)){
+  if(!re_pas_posible.test(regform.pas1.value)){
     message("Not corect pas1 input simbol","lpas1");
     flag=5;
   }
-  else if (!re_pas_digit.test(regform.pas1.value)){
+  else if(!re_pas_digit.test(regform.pas1.value)){
     message("Not corect data input number","lpas1");
     flag=6;
   }
-   else if (!re_pas_upper.test(regform.pas1.value)){
+   else if(!re_pas_upper.test(regform.pas1.value)){
     message("Not corect data input upper Register","lpas1");
     flag=7;
   }
-  if (regform.pas1.value!=regform.pas2.value){
+  if(regform.pas1.value!=regform.pas2.value){
     message("Frirst nad second Password not equals","lpas2");
     flag=8;
   }
@@ -48,9 +48,9 @@ regform.subm.onclick=function(){
 function message(mes,str_id){
   document.getElementById(str_id).innerHTML=mes;
 }
-var inpregf=regform.getElementsByTagName('input');
+var inpregf=regform.getElementsByTagName("input");
 for(i=0;i<inpregf.length;i++){
-  if (inpregf[i].type.toLowerCase() === "text"|| inpregf[i].type.toLowerCase() === "password"){
+  if (inpregf[i].type.toLowerCase()==="text" || inpregf[i].type.toLowerCase()==="password"){
     inpregf[i].onfocus=function(){
       message("","l"+this.id);
     }  

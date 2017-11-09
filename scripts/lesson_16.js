@@ -1,132 +1,118 @@
-/*
-function context(){
-alert(this);
+var can1=document.getElementById("can1");
+var contextcan1=can1.getContext("2d");
+contextcan1.fillRect(10,10,40,50);
+contextcan1.strokeRect(70,70,40,50);
+contextcan1.clearRect(20,20,20,20);
+contextcan1.fillStyle="red";
+contextcan1.strokeStyle="green";
+contextcan1.lineWidth=7;
+contextcan1.fillRect(150,10,40,50);
+contextcan1.strokeRect(130,70,40,50);
+var can2=document.getElementById("can2");
+var contextcan2=can2.getContext("2d");
+can2.width="250";
+can2.height="250";
+contextcan2.beginPath();
+contextcan2.moveTo(10,10);
+contextcan2.lineTo(30,30);
+contextcan2.lineTo(30,10);
+contextcan2.lineTo(10,10);
+contextcan2.closePath();
+contextcan2.fill();
+contextcan2.strokeStyle="red";
+contextcan2.stroke();
+contextcan2.beginPath();
+contextcan2.arc(125,100,50,0,Math.PI*2);
+contextcan2.moveTo(155,100);
+contextcan2.arc(125,100,30,0,Math.PI,false);
+contextcan2.stroke();
+contextcan2.closePath();
+contextcan2.beginPath();
+contextcan2.strokeStyle="white"
+contextcan2.arc(125,100,30,0,Math.PI/2,true);
+contextcan2.stroke();
+contextcan2.closePath();
+contextcan2.beginPath();
+contextcan2.moveTo(0,200);
+contextcan2.quadraticCurveTo(10,10,250,0);
+contextcan2.quadraticCurveTo(240,190,0,200);
+contextcan2.stroke();
+contextcan2.closePath();
+contextcan2.beginPath();
+contextcan2.moveTo(0,0);
+contextcan2.bezierCurveTo(250,0,0,200,250,200);
+contextcan2.moveTo(0,0);
+contextcan2.bezierCurveTo(0,200,250,0,250,200);
+contextcan2.moveTo(0,0);
+contextcan2.bezierCurveTo(0,200,100,200,250,0);
+contextcan2.stroke();
+contextcan2.closePath();
+var can3=document.getElementById("can3");
+var contextcan3=can3.getContext("2d");
+var wcan=hcan=300;
+var xc=wcan/2, yc=hcan/2;
+var rad=Math.min(wcan,hcan)/2-5;
+can3.width=String(wcan*2);
+can3.height=String(hcan);
+masdata=[40,30,0,25,5,0,30];
+mascolor=["red","orange","yellow","green","cyan","blue","violet"];
+for (var i=0,sum=0,j=0; i<masdata.length; i++){
+  sum+=masdata[i];
 }
-
-var obj={
-  name:"sharik",
-  show: context,
-  go: showName,
-  gocall: showName1
-}
-
-//context();
-//obj.show();
-
-function showName(){
-  alert(this.name);
-  setTimeout(showName,3000);
-}
-//obj.go();
-
-function showName1(){
-  alert(this.name);
-  var x=this;
-  setTimeout(function(){
-  showName1.call(x);
-},3000);
-}
-//obj.gocall();
-
-function changeColor(c,bg){
-  this.style.color=c;
-  this.style.backgroundColor=bg;
-}
-changeColor.call(document.body,"red","yellow");
-changeColor.call(document.querySelector('#proba1'),"white","blue");
-
-function changeColor1(){
-  console.log(arguments[0]);
-  console.log(arguments[1]);
-  //console.log(arguments[0]);
- // console.log(mas[1]);
- // this.style.color=mas[1]; //mas=arguments;
- // this.style.backgroundColor=mas[1];  //mas=arguments;
-	this.style.color=arguments[0];
-	this.style.backgroundColor=arguments[1];
-}
-
-changeColor1.apply(document.body,["red","yellow"]);
-changeColor1.apply(document.querySelector("#proba1"),["white","green"]);
-
-var colbody=changeColor.bind(document.body);
-
-setTimeout(function(){
-  colbody("gold","black");
-},1000)
-
-setTimeout(function(){
-  colbody("gold","white");
-},2000)
-*/
-//console.log(sumAll(2,354,8,43,543,51,35,153));
-//console.log(sumAll(8,4,5,5,3,1));
-//console.log(sumAll(651,0xf,"px"))
-/*
-function sumAll(){
-  var len=arguments.length;
- // arguments.toString=[].toString;   
- // alert(arguments.toString());
-  arguments.join=[].join;   
-  alert(arguments.join(":"));
-  arguments.reverse=[].reverse;
-  // arguments.reverse();
-
-  if(len<1){
-    alert("Error,little arguments");
-    return NaN;
+var one=Math.PI*2/sum;
+var angle0=0;
+var angleEnd;
+for(var i=0;i<masdata.length;i++){
+  angleEnd=angle0+one*masdata[i];
+  contextcan3.beginPath();
+  contextcan3.moveTo(xc,yc);
+  contextcan3.arc(xc,yc,rad,angle0,angleEnd,false);
+  contextcan3.lineTo(xc,yc);
+  if(masdata[i]>0){
+    contextcan3.fillStyle=mascolor[j];
+    j++;
+    contextcan3.fillRect(wcan+10,hcan/masdata.length*(j-1)+10,4,4);
+    contextcan3.fillText('-'+masdata[i],wcan+20,hcan/masdata.length*(j-1)+15);
   }
-  for (var i=0,s=0;i<len;i++){
-    s+=arguments[i];
+  contextcan3.fill();
+  contextcan3.closePath();
+  angle0=angleEnd;
+}
+var can4=document.getElementById("can4");
+var contextcan4=can4.getContext("2d");
+var img=new Image();
+var imgSprite=new Image();
+imgSprite.src="img/imageLessonSix.jpg";
+function Sprite(img,coords,size){
+  this.img=img;
+  this.coords=coords;
+  this.size=size;
+  this.frame=0;
+}
+Sprite.prototype.puts=function(can,dx,dy){
+  var context=can.getContext("2d");
+  context.drawImage(this.img,this.frame*this.size.sw,this.coords.sy,this.size.sw,this.size.sh,dx,dy,80,80); 
+}
+var bux=[];
+imgSprite.onload=function(){
+  bux[0]=new Sprite(this,{sx:50,sy:100},{sw:80,sh:80});
+  bux[1]=new Sprite(this,{sx:50,sy:100},{sw:80,sh:80});
+  bux[1].frame=8;
+  changeSprite();
+}
+function changeSprite(){
+  contextcan4.clearRect(0,0,can4.width,can4.height);
+  bux[0].puts(can4,50,50);
+  if (bux[0].frame>12){
+    bux[0].frame=0;
+  }else{
+    bux[0].frame++;
   }
-return s;
+  bux[1].puts(can4,90,90);
+    if (bux[1].frame>12){
+      bux[1].frame=0;
+    }else{
+      bux[1].frame++;
+    }
+  setTimeout(changeSprite,500);
 }
-
-sumAll2(2,5,82,4,5,8,5,)
-function sumAll2(x,...mas){
-}
-
-function sumAll3(...mas){
-mas.sort(function(a,b){
-  return a-b;
-});
-alert("mas:\n"+mas);
-for (var i = 0,s=0;i< mas.length ; s+=mas[i], i++) {
-}
-return s;
-}
-console.log(sumAll3(45,65,1,5,4));
-*/
-/*
- function difDate(d1,d2){
-       var obj={
-       day:0,
-      hours:0,
-     min: 0,
-     sec:0,
-  ms:0,
-    actuall:0
-     }
-     var t=d2.getTime()-d1.getTime();
-     //switch(Math.sign(t)){}
-     odj.actuall=Math.sign(t);
-     if(t<0) t*=(-1);
-     obj.day=Math.floor(t/(1000*60*60*24));
-    t-=obj.day*1000*60*60*24;
-    obj.hours=Math.floor(t/(1000*60*60));
-   t-=obj.hours*1000*60*60;
-    obj.min=Math.floor(t/(1000*60));
-  t-=obj.min*1000*60;
-     obj.sec=Math.floor(t/(1000));
-     t-=obj.sec*1000;
-    obj.ms=t;
-    return obj;
-  }
-   var date1= new Date();
-     var date2 = new Date(2017,5,17,13);
-    console.log(difDate(date1,date2));
-   date1 =new Date();
-   date2=new Date(2018,0);
-  var dif=difDate(date1,date2);
-  document.detElementById("tny").rows[1].cells[2].innerHTML=dif.day;
-  */
