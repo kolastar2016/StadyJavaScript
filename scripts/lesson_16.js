@@ -95,14 +95,14 @@ Sprite.prototype.puts=function(can,dx,dy){
 }
 var bux=[];
 imgSprite.onload=function(){
-  bux[0]=new Sprite(this,{sx:50,sy:100},{sw:80,sh:80});
-  bux[1]=new Sprite(this,{sx:50,sy:100},{sw:80,sh:80});
+  bux[0]=new Sprite(this,{sx:100,sy:100},{sw:80,sh:80});
+  bux[1]=new Sprite(this,{sx:100,sy:100},{sw:80,sh:80});
   bux[1].frame=8;
   changeSprite();
 }
 function changeSprite(){
   contextcan4.clearRect(0,0,can4.width,can4.height);
-  bux[0].puts(can4,50,50);
+  bux[0].puts(can4,90,90);
   if (bux[0].frame>12){
     bux[0].frame=0;
   }else{
