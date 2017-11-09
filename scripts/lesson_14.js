@@ -1,100 +1,111 @@
-/*
-var myF1 = new Function("a,b","return a*b"); 
-console.log(myF1(3,4));
-
-document.querySelector('#makefunct').onclick=function(){
-  var arg="";
-  var kod= document.querySelector('#kod').value;
-  var nf =new Function(arg,kod);
-console.log(nf);
-console.log(nf());
-};
-
-(function(){
-  alert();
-})();
-
-
-
-(function(){
-	alert();
-  var win=document.createElement('div');
-win.style.cssText="position: absolute; z-index: 3000px;top:200px;left:200px;width:400px;height:300px;background-color:purple;";
-
-  document.body.appendChild(win);
-  var head=document.createElement('div');
-  head.style.cssText="margin: 0px;\
-  text-align: right;\
-  height: 20px;\
-  width: 100%;\
-  background-color:lime;";
-  win.appendChild(head);
-
-  var content=document.createElement('div');
-  content.style.cssText="margin: 0px;\
-  height: 280px;\
-  width: 100%;";
-  
-  win.appendChild(content);
-  content.innerHTML="<strong> This is your promotion</strong>"
-
-  var but=document.createElement("button");
-  but.innerHTML="x";
-  but.style.cssText="background-color:blue;color:yellow;"
-  head.appendChild(but);
-
-  function close(){
-    win.style.display="nons";
-
-    document.body.removeChild(win);
-  }
-
-  setTimeout(function(){
-    but.onclick=close;
-  },7000);
-
-
-function proba(){
-  if(proba.count!=underfined){
-    proba.count++;
-  }
-    else{
-      proba.count=0;
+/* ONE VERSION*/
+var pole=document.getElementById("dv2");
+var ball_1=document.getElementById("ball2");
+var indmove=0;
+var countmove=0;
+var clear;
+pole.onclick=function(event){
+  countmove++;
+    if(indmove===1){
+      clearTimeout(moveBall_1.clear);
     }
+  var x=event.clientX;
+  var y=event.clientY;
+  var coordsball=ball_1.getBoundingClientRect();
+  var x2=coordsball.left;
+  var y2=coordsball.top;
+  var dx=Math.sign(x-x2);
+  var dy=Math.sign(y-y2);
+  var cx=x2;
+  var cy=y2;
+  var coordspole=pole.getBoundingClientRect();
+  var sinf=(y-y2)/Math.sqrt((x-x2)**2+(y-y2)**2);
+  var cosf=(x-x2)/Math.sqrt((x-x2)**2+(y-y2)**2);
+  var dl=0;
+
+  function moveBall_1(){
+    if(clear!=undefined){
+      clearTimeout(clear);
+    }
+    dl++;
+    cx=x2+dl*cosf;
+    cy=y2+dl*sinf;
+    if(dl<=Math.round(Math.sqrt((x-x2)**2+(y-y2)**2))){
+      if(dl==Math.round(Math.sqrt((x-x2)**2+(y-y2)**2))){
+        cx=x;cy=y;
+      }
+      if(cx>coordspole.right-ball_1.clientWidth){
+        cx=coordspole.right-ball_1.clientWidth; 
+      }
+      if(cy>coordspole.bottom-ball_1.clientHeight) {
+        cy=coordspole.bottom-ball_1.clientHeight; 
+      }
+      var scrollTop=window.pageYOffset || document.documentElement.scrollTop;
+      var scrollLeft=window.pageXOffset || document.documentElement.scrollLeft;
+      ball_1.style.left=cx+scrollLeft+"px";
+      ball_1.style.top=cy+scrollTop+"px";
+      clear=setTimeout(moveBall_1,20);
+    } 
+  }
+  moveBall_1();
 }
-proba();
-proba();
-proba();
-proba();
 
-console.log(proba.count);
-
-
-window.onload= function(){
-      var menu=document.getElementById("menu");
-	  menu.onclick= function(event){
-	    var e=event||window.event;
-        var tg=e.target;
-        if(tg.id.substr(0,5).toLowerCase()==="btask") {
-		  
-           changeTask(tg);// вызов функции 
-        }		
-	    }
-	  
-	  
-function changeTask(tg){
-     // задаем свойство currenttask для функции, в котором будут хранится ссылка на div, содержащий выбранную задачу
-    //скроем предыдущую задачу, если она есть  
-   if(changeTask.currenttask!=undefined){
-    changeTask.currenttask.style.display = "none";
-	}
-	// меняем текущую задачу  
-	changeTask.currenttask =document.getElementById(tg.id.substr(1));
-		 
-	// делаем текущую задачу видимой
-	changeTask.currenttask.style.display="block";
-	//console.log(changeTask.currenttask);
+/*TWO VERSION*/
+/*
+var pole=document.getElementById("dv2");
+var ball_1=document.getElementById("ball2");
+console.log("ширина поля -" + pole.clientWidth);
+console.log("высота поля -" + pole.clientHeight);
+console.log("ширина рисунка с мячиком -" + ball_1.clientWidth);
+console.log("высота рисунка с мячиком -" + ball_1.clientHeight);
+var indmove=0;
+var clear;
+pole.onclick =  function(event) {
+  var x=event.clientX;
+  var y=event.clientY;
+  var  coordsball=ball_1.getBoundingClientRect();
+  var x2=coordsball.left;
+  var y2=coordsball.top;
+  var dx=Math.sign(x-x2); 
+  var dy=Math.sign(y-y2);//console.log("dy="+dy);
+  var cx=x2;
+  var cy=y2;
+  var coordspole=pole.getBoundingClientRect();
+  function moveBall_1(){
+    if(clear!=undefined){clearTimeout(clear);
+      x2=cx; y2=cy;
+    }
+    cx=cx+dx;
+    if(x2!=x){
+      cy=(cx-x)*(y2-y)/(x2-x)+y;
+    }else {
+      cy=cy+dy;
+    }
+    if((cx<=x && dx>=0 || cx>=x && dx<=0) && (cy<=y && dy>=0 || cy>=y && dy<=0)){
+      if(cx>coordspole.right-ball_1.clientWidth) {
+        cx=coordspole.right-ball_1.clientWidth;
+        x=cx+dx;
+      }
+      if(cy>coordspole.bottom-ball_1.clientHeight) {
+        cy=coordspole.bottom-ball_1.clientHeight;
+        y=cy+dy
+      }
+      // indmove=1;
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+      ball_1.style.left=cx+scrollLeft+"px";
+      ball_1.style.top=cy+scrollTop+"px";
+      clear=setTimeout(moveBall_1,20);
+    } else {
+      indmove=0;
+      //countmove--
+    }
+  }
+  //if(indmove!=1) moveBall_1();
+  moveBall_1();
+  //var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  //var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    //ball_1.style.left=x+scrollLeft+"px";
+    //ball_1.style.top=y+scrollTop+"px";
 }
-}	
-
 */
